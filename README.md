@@ -1,4 +1,5 @@
 Smart Document Reader: A RAG-Based QA Assistant Using LLaMA and FAISS
+
 📌 Project Overview
 
 Smart Document Reader is an AI-powered Question Answering (QA) assistant that leverages Retrieval-Augmented Generation (RAG) with Meta’s LLaMA 3.2 model and FAISS vector search to provide accurate, document-grounded responses. Unlike generic chatbots such as ChatGPT, this system retrieves relevant information directly from user-uploaded documents (PDF, DOCX, TXT, etc.), ensuring context-aware, reliable, and privacy-focused answers.
