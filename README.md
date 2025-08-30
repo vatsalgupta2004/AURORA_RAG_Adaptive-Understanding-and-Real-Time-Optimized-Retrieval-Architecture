@@ -1,84 +1,197 @@
-Smart Document Reader: A RAG-Based QA Assistant Using LLaMA and FAISS
-📌 Project Overview
+# Smart Document Reader: A RAG-Based QA Assistant Using LLaMA and FAISS
 
-Smart Document Reader is an AI-powered Question Answering (QA) assistant that leverages Retrieval-Augmented Generation (RAG) with Meta’s LLaMA 3.2 model and FAISS vector search to provide accurate, document-grounded responses. Unlike generic chatbots such as ChatGPT, this system retrieves relevant information directly from user-uploaded documents (PDF, DOCX, TXT, etc.), ensuring context-aware, reliable, and privacy-focused answers.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-This project is developed as part of a Final Year B.Tech (CSE) Minor Project, aiming to demonstrate how open-source LLMs + retrieval systems can power domain-specific, real-world applications.
+## 📌 Project Overview
 
-🚀 Key Features
+Smart Document Reader is an **advanced AI-powered Question Answering (QA) assistant** that leverages state-of-the-art **Retrieval-Augmented Generation (RAG)** with Meta's LLaMA 3.2 model and FAISS vector search to deliver precise, document-grounded responses.
 
-📂 Multi-format document support (PDF, DOCX, TXT, etc.)
+Unlike generic chatbots such as ChatGPT, this system **retrieves relevant information directly from user-uploaded documents** (PDF, DOCX, TXT), ensuring context-aware, accurate, and **privacy-focused answers** without relying on external APIs.
 
-🔍 Efficient semantic search using FAISS embeddings
+This project is developed as part of a **Final Year B.Tech (CSE) Minor Project**, demonstrating how open-source LLMs combined with retrieval systems can power domain-specific, real-world applications.
 
-🧠 RAG pipeline to combine document retrieval with generative reasoning
+## 🚀 Key Features
 
-🔒 Offline & privacy-preserving (no external API calls required)
+### 📂 **Document Processing**
+- **Multi-format support**: PDF, DOCX, TXT files
+- **Smart text chunking** with sentence boundary detection
+- **Real-time processing statistics** and quality metrics
+- **Comprehensive document analysis dashboard**
 
-⚡ Fast inference powered by LLaMA 3.2 (open-source)
+### 🧠 **AI & RAG Pipeline**
+- **Advanced RAG architecture** combining retrieval + generation
+- **FAISS vector search** for semantic similarity
+- **LLaMA 3.2 integration** via Ollama
+- **Sentence Transformers** for embedding generation
 
-🎯 Domain-aware responses tailored to the uploaded content
+### 🎤 **Voice & Audio Features**
+- **Browser-based voice recording** with automatic permission requests
+- **Real-time audio frequency analysis** and visualization
+- **Speech-to-text transcription** using Google Speech API
+- **Interactive audio quality assessment**
 
-🖥️ Interactive UI (Streamlit-based interface)
+### 🖥️ **User Interface**
+- **Professional Streamlit UI** with tabbed interface
+- **Real-time performance monitoring**
+- **Interactive charts and visualizations** (Plotly)
+- **Export capabilities** (CSV, JSON, reports)
 
-🔧 Extensible architecture for adding speech, multi-doc search, or cloud integration
+### 🔒 **Privacy & Performance**
+- **Completely offline operation** (no external API calls for LLM)
+- **Local document processing** ensuring data privacy
+- **Optimized caching** for fast response times
+- **Graceful fallbacks** for missing dependencies
 
-🛠️ Tech Stack
+---
 
-LLM: Meta LLaMA 3.2
+## 🛠️ Tech Stack
 
-Retrieval: FAISS (Facebook AI Similarity Search)
+| Component | Technology |
+|-----------|------------|
+| **LLM** | Meta LLaMA 3.2 (via Ollama) |
+| **Vector Search** | FAISS (Facebook AI Similarity Search) |
+| **Embeddings** | Sentence Transformers (all-MiniLM-L6-v2) |
+| **Framework** | LangChain, Hugging Face |
+| **UI/Frontend** | Streamlit |
+| **Document Processing** | PyMuPDF, python-docx |
+| **Audio Processing** | SciPy, SpeechRecognition, pyttsx3 |
+| **Visualization** | Plotly, Pandas |
+| **Optional Extensions** | Whisper (future), Weaviate/Milvus |
 
-Frameworks: LangChain, Hugging Face
+---
 
-UI/Frontend: Streamlit
+## 🔄 System Workflow
 
-Document Processing: PyMuPDF, pdfplumber, python-docx
+📤 Upload Documents → PDF/DOCX/TXT files
+🔧 Preprocessing → Text extraction + smart chunking
+🧮 Embedding Generation → Sentence Transformers
+📊 FAISS Indexing → Vector storage for fast retrieval
+🎤 User Input → Text or voice question
+🔍 Retrieval → FAISS semantic search (top-k chunks)
+🧠 Answer Generation → LLaMA 3.2 contextual response
+📋 Result Display → Answer + sources + citations
 
-Optional Extensions: Whisper (speech-to-text), Weaviate/Milvus (future vector DB support)
+## 📊 New Features Added
 
-📂 System Workflow
+### 🎤 **Voice Interface**
+- **Automatic microphone permission** requests via JavaScript
+- **Real-time audio analysis** with frequency spectrum visualization
+- **Speech-to-text conversion** with quality assessment
+- **Audio export** and transcript download options
 
-Upload Document → (PDF/DOCX/TXT)
+### 📄 **Document Analysis Dashboard**
+- **Processing statistics** per document (time, accuracy, chunks)
+- **Performance metrics** and efficiency analysis
+- **Interactive charts** showing processing trends
+- **Export options** for analysis reports (CSV, JSON, TXT)
+- **Quality assessment** and error rate tracking
 
-Preprocessing → Chunking + Embedding generation (BAAI / Hugging Face embeddings)
+### 🔧 **System Improvements**
+- **Optimized loading** with smart caching
+- **Graceful dependency management** with fallbacks
+- **Professional UI design** with gradient headers
+- **Comprehensive error handling** and debugging
 
-Indexing → Store embeddings in FAISS for semantic similarity search
 
-User Query → Natural language question input
+## 🚀 Installation & Setup
 
-Retrieval → FAISS fetches top-k relevant document chunks
+### Prerequisites
+Install Python 3.8+
+pip install streamlit numpy pandas
 
-Answer Generation → LLaMA 3.2 generates a contextual response
+Core features
+pip install scipy SpeechRecognition PyMuPDF python-docx
 
-Result Display → Streamlit UI shows the final answer + supporting document text
+Advanced features (optional)
+pip install plotly sentence-transformers faiss-cpu pyttsx3
 
-🔮 Future Scope
+LLM support
+pip install ollama
 
-📊 Multi-document querying (search across multiple uploads)
+### Running the Application
 
-🎙️ Speech-enabled interaction (Whisper + TTS integration)
+Clone the repository
+git clone https://github.com/yourusername/smart-document-reader
+cd smart-document-reader
 
-☁️ Hybrid deployment (local + cloud) for scalability
+Install dependencies
+pip install -r requirements.txt
 
-📑 Research publication based on performance & benchmarking
+Start Ollama (for LLM)
+ollama pull llama3.2:3b
 
-🎓 Integration with college website for academic assistance
+Run the application
+streamlit run app.py
 
-🔐 Domain-specific fine-tuning (e.g., law, healthcare, education)
+---
 
-📚 References
+## 📱 Usage
 
-Meta AI – LLaMA 3.2 Model Card: https://ai.meta.com/llama/
+1. **🎤 Enable Microphone**: Grant browser permissions for voice features
+2. **📚 Upload Documents**: Add PDF/DOCX/TXT files via sidebar
+3. **🔨 Build Index**: Process documents and create vector embeddings
+4. **❓ Ask Questions**: Use text input or voice recording
+5. **📊 View Analysis**: Check document processing statistics
+6. **📥 Export Results**: Download answers, transcripts, and reports
 
-Hugging Face – https://huggingface.co/models
+---
 
-Retrieval-Augmented Generation (RAG) Paper: https://arxiv.org/abs/2005.11401
+## 🔮 Future Scope
 
-FAISS Documentation – https://github.com/facebookresearch/faiss
+### 📈 **Immediate Enhancements**
+- **Multi-document querying** across entire knowledge base
+- **Advanced audio features** with noise reduction
+- **Real-time collaboration** and document sharing
 
-BAAI Embedding Models – https://huggingface.co/BAAI
+### 🌐 **Research & Development**
+- **Performance benchmarking** against commercial solutions
+- **Domain-specific fine-tuning** (legal, medical, academic)
+- **Integration with institutional systems**
 
-LangChain Framework – https://www.langchain.com/
+### ☁️ **Scalability**
+- **Hybrid deployment** (local + cloud processing)
+- **Enterprise features** (user management, analytics)
+- **API development** for third-party integrations
 
-Whisper for Speech-to-Text – https://github.com/openai/whisper
+---
+
+## 🎓 Academic Context
+
+This project serves as a **comprehensive demonstration** of modern NLP techniques:
+
+- **Retrieval-Augmented Generation (RAG)** implementation
+- **Vector database** integration and optimization  
+- **Multi-modal AI** combining text and voice interfaces
+- **Real-world application** of academic research
+
+**Suitable for**: Final year projects, research publications, industry demonstrations
+
+---
+
+## 📚 References & Resources
+
+- **Meta LLaMA 3.2**: [ai.meta.com/llama](https://ai.meta.com/llama/)
+- **RAG Paper**: [arxiv.org/abs/2005.11401](https://arxiv.org/abs/2005.11401)
+- **FAISS Library**: [github.com/facebookresearch/faiss](https://github.com/facebookresearch/faiss)
+- **Sentence Transformers**: [huggingface.co/sentence-transformers](https://huggingface.co/sentence-transformers)
+- **Streamlit Framework**: [streamlit.io](https://streamlit.io/)
+- **Ollama Local LLM**: [ollama.ai](https://ollama.ai/)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Contact
+
+For questions or collaboration opportunities, please reach out via [gupta.vatsal2004@gmail.com](mailto:your-email@domain.com)
+
+
+**⭐ If you found this project helpful, please consider giving it a star!**
