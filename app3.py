@@ -942,7 +942,8 @@ def main():
                         st.session_state.vec_index = vec_index
                         st.session_state.embeddings = embeddings
                         
-                        st.balloons()
+                        #st.balloons()
+                        st.toast("✅ Index built successfully!", icon="🎉")
                         st.success(f"🎉 Index built: {len(all_chunks):,} chunks!")
 
     # Main interface with NEW 5th tab
