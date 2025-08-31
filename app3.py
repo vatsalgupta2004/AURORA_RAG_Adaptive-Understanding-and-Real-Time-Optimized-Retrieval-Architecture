@@ -560,6 +560,59 @@ AVAILABLE SOURCES: {len(retrieved_chunks)} documents"""
 """
 
 # ==========================
+# IMPROVED TEXT-TO-SPEECH FUNCTION
+# ==========================
+def speak_text_safely(text):
+    """Improved text-to-speech function with better error handling"""
+    if not TTS_AVAILABLE:
+        return False, "pyttsx3 not available"
+    
+    try:
+        # Initialize engine with error handling
+        engine = pyttsx3.init()
+        
+        # Set properties for better speech quality
+        voices = engine.getProperty('voices')
+        if voices:
+            engine.setProperty('voice', voices[0].id)  # Use first available voice
+        
+        # Adjust speech rate (slower = clearer)
+        rate = engine.getProperty('rate')
+        engine.setProperty('rate', rate - 50)  # Slower than default
+        
+        # Adjust volume (0.0 to 1.0)
+        engine.setProperty('volume', 0.9)
+        
+        # Clean the text for better pronunciation
+        clean_text = text.replace('[SOURCE', 'Source').replace(']', '').replace('*', '').replace('#', '')
+        clean_text = clean_text.replace('**', '').replace('_', '').strip()
+        
+        # Limit text length to avoid timeout
+        if len(clean_text) > 1000:
+            clean_text = clean_text[:1000] + "... Text truncated for speech."
+        
+        # Speak the text
+        engine.say(clean_text)
+        engine.runAndWait()
+        
+        # Clean up engine
+        try:
+            engine.stop()
+        except:
+            pass
+        
+        return True, "Speech completed successfully"
+        
+    except Exception as e:
+        # Clean up engine on error
+        try:
+            if 'engine' in locals():
+                engine.stop()
+        except:
+            pass
+        return False, f"TTS Error: {str(e)}"
+
+# ==========================
 # NEW DOCUMENT ANALYSIS SECTION
 # ==========================
 def render_document_analysis():
@@ -1080,20 +1133,19 @@ def main():
                                         preview = chunk['text'][:300] + "..." if len(chunk['text']) > 300 else chunk['text']
                                         st.markdown(f"*{preview}*")
                                 
-                                # Actions
+                                # Actions - FIXED TTS SECTION
                                 col_act1, col_act2 = st.columns(2)
                                 
                                 with col_act1:
                                     if st.button("🔊 Speak Answer") and TTS_AVAILABLE:
-                                        with st.spinner("Converting to speech..."):
-                                            try:
-                                                engine = pyttsx3.init()
-                                                clean_answer = answer.replace('[', '').replace(']', '').replace('*', '')
-                                                engine.say(clean_answer)
-                                                engine.runAndWait()
-                                                st.success("✅ Speech completed")
-                                            except Exception as e:
-                                                st.error(f"TTS failed: {e}")
+                                        with st.spinner("🔊 Converting to speech..."):
+                                            success, message = speak_text_safely(answer)
+                                            if success:
+                                                st.success(f"✅ {message}")
+                                            else:
+                                                st.error(f"❌ {message}")
+                                                # Fallback instructions
+                                                st.info("💡 **TTS Troubleshooting:**\n- Install: `pip install pyttsx3`\n- Check system audio drivers\n- Try shorter text")
                                 
                                 with col_act2:
                                     if st.button("💾 Save to History"):
