@@ -8,3 +8,9 @@ ollama
 pyttsx3
 SpeechRecognition
 pyaudio
+plotly
+scipy
+pandas
+scikit-learn
+rank-bm25
+nltk
