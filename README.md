@@ -1,13 +1,12 @@
 🌟 AURORA-RAG: Adaptive Understanding and Real-Time Optimized Retrieval Architecture
 <div align="center">
-![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white/Streamlit-1.28+-red?style=for-the-badgenamee
 
 🚀 Revolutionary RAG System with Adaptive Intelligence 🧠
 Breaking the boundaries of traditional document AI with coherence-aware processing and real-time optimization
 
 🎯 Try Demo - 📊 Performance - 🛠️ Install - 📖 Paper
 
-![AURORA-RAG Demo](https://via.placeholder.com/800x400/1a1a2e/16a085?text=AURORA-RAG What Makes AURORA-RAG Special?
+What Makes AURORA-RAG Special?
 
 "The first RAG system that thinks like a human when reading documents" 🧠✨
 
@@ -46,7 +45,7 @@ Mind-blowing performance improvements across ALL metrics! 📈
 🚀 Get Started in 3 Minutes!
 bash
 # 1️⃣ Clone the magic ✨
-git clone https://github.com/your-username/aurora-rag.git
+git clone https://github.com/vatsalgupta2004/AURORA_RAG_Adaptive-Understanding-and-Real-Time-Optimized-Retrieval-Architecture.git
 cd aurora-rag
 
 # 2️⃣ Create your environment 🏠
